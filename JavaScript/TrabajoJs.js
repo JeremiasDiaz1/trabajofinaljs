@@ -10,7 +10,7 @@ class producto {
 }
 
 
-
+// Agregar cosas al carrito
 
 function solicitarProducto () {
     
@@ -20,23 +20,57 @@ function solicitarProducto () {
     
 }
 let productoEnCarro = []
+console.log(localstorage.getitem(productoEnCarro))
 
-function agregarCarrito () {
+function agregarCarrito() {
     let nombre = document.getElementById('nombre').value;
     let precio = document.getElementById('precio').value;
     let elemento = new producto()
     elemento.nombre = nombre 
     elemento.precio = precio
-
+    localStorage.setItem('productoEnCarro', JSON.stringify('productoEnCarro'))
     
     productoEnCarro.push (elemento)
     console.log( 'selecciono ' , elemento)
     console.log(productoEnCarro);
+    
+
 }
 
-    
 
-//solicitarProducto ();
+// carrito 
 
+function carrito() {
+    const container = document.getElementById('carro')
+    for (const producto of producto) {
+        
+        const item = document.createElement('li')
+        item.className = "list-group"
+        item.textContent = producto
+        inputRef.value = producto
+        container.appendChild(item)
+    }
     
+}
+
+
+//  vaciar carrito
+
+function vaciarCarrito() {
+    
+    carrito = [];
+    
+    renderizarCarrito();
+}
+
+
+
+
+
+
+
+
+
+
+
 
